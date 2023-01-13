@@ -1,4 +1,5 @@
 // Coloque aqui suas actions
+export const DELETE_EXPENSES = 'DELETE_EXPENSES';
 
 export const userLogin = (email) => ({
   type: 'USER_LOGIN',

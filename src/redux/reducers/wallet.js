@@ -1,9 +1,13 @@
+import { DELETE_EXPENSES } from '../actions';
+
+let convertedValue;
+
 const INITIAL_STATE = {
   currencies: [],
   expenses: [],
   editor: false,
   idToEdit: 0,
-  convertValue: 0,
+  convertedAmount: 0,
 };
 
 const wallet = (state = INITIAL_STATE, action) => {
@@ -14,15 +18,23 @@ const wallet = (state = INITIAL_STATE, action) => {
       currencies: action.payload.currencies,
     };
   case 'NEW_EXPENSES':
+    convertedValue = action.payload.value
+    * action.payload.exchangeRates[action.payload.currency].ask;
     return {
       ...state,
       expenses: [...state.expenses, action.payload],
-      convertValue: state.convertValue
-        + (action.payload.value
-          * action.payload.exchangeRates[action.payload.currency].ask),
+      convertedAmount: state.convertedAmount + convertedValue,
     };
-  default: return state;
+  case DELETE_EXPENSES: {
+    return {
+      ...state,
+      expenses: action.expenses,
+      expensesTotal: action.expensesTotal,
+      convertedAmount: action.convertedAmount,
+    };
+  }
+  default:
+    return state;
   }
 };
-
 export default wallet;
