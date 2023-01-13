@@ -1,5 +1,3 @@
-import { DELETE_EXPENSES } from '../actions';
-
 let convertedValue;
 
 const INITIAL_STATE = {
@@ -25,7 +23,7 @@ const wallet = (state = INITIAL_STATE, action) => {
       expenses: [...state.expenses, action.payload],
       convertedAmount: state.convertedAmount + convertedValue,
     };
-  case DELETE_EXPENSES: {
+  case 'DELETE_EXPENSES': {
     return {
       ...state,
       expenses: action.expenses,

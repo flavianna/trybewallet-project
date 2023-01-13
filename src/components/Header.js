@@ -11,7 +11,6 @@ class Header extends Component {
         <p data-testid="total-field">{ convertedAmount.toFixed(2) }</p>
         <p data-testid="converted-total-field">{expensesTotal}</p>
         <p data-testid="header-currency-field">BRL</p>
-        ;
       </div>
     );
   }

@@ -1,6 +1,3 @@
-// Coloque aqui suas actions
-export const DELETE_EXPENSES = 'DELETE_EXPENSES';
-
 export const userLogin = (email) => ({
   type: 'USER_LOGIN',
   payload: email,
@@ -13,6 +10,10 @@ export const expensesInformation = (expensesInf) => ({
 
 export const requesteApi = () => ({
   type: 'REQUEST_DATA',
+});
+
+export const deleteExpenses = () => ({
+  type: 'DELETE_EXPENSES',
 });
 
 export const requestSuccess = (request) => ({
